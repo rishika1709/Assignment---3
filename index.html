@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20210912/pngtree-aesthetic-background-pink-pastel-image_866344.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            height: 300px; /* Increased height to provide space for the button */
+        }
+
+        .container {
+            width: 300px;
+            height: 150px;
+            background-color: lightcoral; /* Initial background color */
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            position: relative; /* Needed for positioning pseudo-elements */
+        }
+
+        .container::before {
+            font-size: 20px;
+            color: #fff;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .container::after {
+            font-size: 20px;
+            color: #fff;
+            opacity: 0; /* Hide changed text initially */
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .toggle-button {
+            display: none;
+        }
+
+        .toggle-button:checked ~ .container {
+            background-color: pink;
+        }
+
+        .toggle-button:checked ~ .container::before {
+            opacity: 0; /* Hide initial text */
+        }
+
+        .toggle-button:checked ~ .container::after {
+            opacity: 1; /* Show changed text */
+        }
+
+        .label-button {
+            padding: 10px 20px;
+            background-color: #2c3e50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+            font-size: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            user-select: none;
+            display: inline-block;
+        }
+
+        .toggle-button:checked + .label-button {
+            background-color: #27ae60;
+        }
+
+        .label-button:active {
+            transform: scale(0.98);
+        }
+    </style>
+    <title>Beautiful Toggle</title>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Hidden checkbox -->
+        <input type="checkbox" id="toggle" class="toggle-button">
+
+        <!-- Container with text -->
+        <div class="container"></div>
+
+        <!-- Button -->
+        <label for="toggle" class="label-button">Click Me</label>
+    </div>
+</body>
+</html>
